@@ -11,20 +11,15 @@ import { onAuthStateChanged } from 'firebase/auth';
   styleUrls: ['./float-menu.component.scss'],
 })
 export class FloatMenuComponent implements OnInit, OnDestroy {
-
   datosMenu: Menu[] =[
     {nombre: 'login',enlace:'/login',
    icono:'log-in-outline'},
    {nombre: 'logout',enlace:'/home',
    icono:'log-out-outline'}
   ];
-
   titleMenu: string='home';
-
    public isLoged : any = false;
-
    public subscription : Subscription = new Subscription();
-
   constructor(
     private autService: AutService,
     private menuService: MenuServiceService,
@@ -42,14 +37,11 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
           }
       );
   }
-
   ngOnInit() {}
-
   navegar(link: string, titleMenu: string){
      this.titleMenu =titleMenu;
      this.router.navigate([link]);
    }
-
   ngOnDestroy(): void {
     if(this.subscription != null || this.subscription!= undefined){
       this.subscription.unsubscribe();
@@ -67,12 +59,13 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
        icono:'cash-outline'},
        {nombre: 'inicio',enlace:'/inicio',
        icono:'navigate-outline'},
+       {nombre: 'Turismo',enlace:'/destinos',
+      icono:'airplane'},
        {nombre: 'Tabs',enlace:'/tabs',
        icono:'folder-outline'},
            {nombre: 'logout',enlace:'/home',
            icono:'log-out-outline'}
          ];
-
        }
       else{
          this.datosMenu =[
