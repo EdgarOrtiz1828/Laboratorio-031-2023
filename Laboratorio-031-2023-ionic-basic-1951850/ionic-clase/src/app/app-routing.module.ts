@@ -29,6 +29,49 @@ const routes: Routes = [
   {
     path: 'receptor',
     loadChildren: () => import('./receptor/receptor.module').then( m => m.ReceptorPageModule),
+    path: 'main',
+    children: [
+      {
+        path: 'presupuesto',
+        loadChildren: () => import('./presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule),
+        canActivate: [AutGuardGuard]
+      },
+      {
+        path: 'alumnos',
+        loadChildren: () => import('./alumnos/alumnos.module').then( m => m.AlumnosPageModule),
+        canActivate: [AutGuardGuard]
+      },
+      {
+        path: 'inicio',
+        loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
+        canActivate: [AutGuardGuard]
+      },
+      {
+        path: 'receptor',
+        loadChildren: () => import('./receptor/receptor.module').then( m => m.ReceptorPageModule),
+        canActivate: [AutGuardGuard]
+      },
+      {
+        path: 'receta',
+        loadChildren: () => import('./receta/receta.module').then( m => m.RecetaPageModule),
+        canActivate: [AutGuardGuard]
+      },
+      {
+        path: 'detalle-receta',
+        loadChildren: () => import('./detalle-receta/detalle-receta.module').then( m => m.DetalleRecetaPageModule),
+        canActivate: [AutGuardGuard]
+      },
+      {
+        path: 'tabs',
+        loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
+        canActivate: [AutGuardGuard]
+      },
+      {
+        path: 'destinos',
+        loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule),
+        canActivate: [AutGuardGuard]
+      }
+    ],
     canActivate: [AutGuardGuard]
   },
   {
@@ -45,6 +88,9 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
     canActivate: [AutGuardGuard]
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
     path: 'login',
@@ -59,6 +105,7 @@ const routes: Routes = [
     loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule),
     canActivate: [AutGuardGuard]
   },
+  
 ];
 
 @NgModule({
